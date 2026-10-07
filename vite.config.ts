@@ -1,4 +1,3 @@
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -8,10 +7,10 @@ import { copyFileSync } from "fs";
 export default defineConfig(({ mode }) => ({
   /**
    * GitHub Pages
-   * يبقى كما هو حاليًا لأن المشروع منشور داخل:
-   * /rubou-albilad/
+   * المشروع منشور داخل:
+   * /haddad/
    */
-  base: "/rubou-albilad/",
+  base: "/haddad/",
 
   server: {
     host: "::",
@@ -80,4 +79,3 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 1000,
   },
 }));
-
