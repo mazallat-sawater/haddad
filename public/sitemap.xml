@@ -1,71 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- Homepage - Highest Priority -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية -->
   <url>
-    <loc>https://muthallat.com/</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://mazallat-sawater.github.io/haddad/</loc>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Main Services - High Priority -->
+
+  <!-- المظلات -->
   <url>
-    <loc>https://muthallat.com/warehouses-detail</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://mazallat-sawater.github.io/haddad/canopies</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://muthallat.com/canopies-detail</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://mazallat-sawater.github.io/haddad/car-canopies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/garden-canopies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/school-canopies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/french-arch-canopies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/pyramidal-car-canopies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- السواتر -->
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/shutters</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://muthallat.com/shutters-detail</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://mazallat-sawater.github.io/haddad/laser-shutters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/fencing-shutters</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- البرجولات والتلبيسات -->
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/pergolas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/wood-cladding</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- التلبيسات والواجهات -->
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/cladding</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/cladding-facades</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/doors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- الهناجر والمستودعات -->
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/warehouses</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
-    <loc>https://muthallat.com/sandwich-panel-detail</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://mazallat-sawater.github.io/haddad/warehouses-detail</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/sandwich-panel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/sandwich-warehouses</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/fabric-houses</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- الشبوك والتسوير -->
+  <url>
+    <loc>https://mazallat-sawater.github.io/haddad/fencing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://muthallat.com/fencing-detail</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mazallat-sawater.github.io/haddad/building-fencing</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Additional Services -->
+
+  <!-- الأسقف -->
   <url>
-    <loc>https://muthallat.com/cladding-detail</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://mazallat-sawater.github.io/haddad/roofing-tiles</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://muthallat.com/doors-detail</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://muthallat.com/LaserShutters-detail</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://muthallat.com/woodcladding-detail</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
 </urlset>
-
-
