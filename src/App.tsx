@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from "react";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -176,7 +175,8 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      <BrowserRouter basename="/rubou-albilad/">
+      {/* GitHub Pages */}
+      <BrowserRouter basename="/haddad/">
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
 
