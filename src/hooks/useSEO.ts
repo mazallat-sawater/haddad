@@ -1,4 +1,7 @@
+
 import { useEffect } from "react";
+
+import { client } from "@/config/client";
 
 interface SEOProps {
   title: string;
@@ -10,7 +13,8 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const SITE_URL = "https://canopies-makkah.com";
+const SITE_URL = client.siteUrl.replace(/\/$/, "");
+
 const DEFAULT_IMAGE = `${SITE_URL}/hero-bg.webp`;
 
 export const useSEO = ({
@@ -60,7 +64,7 @@ export const useSEO = ({
     updateMetaTag("og:url", url, true);
     updateMetaTag("og:type", type, true);
     updateMetaTag("og:locale", "ar_SA", true);
-    updateMetaTag("og:site_name", "مظلات وسواتر مكة والمدينة مظلات سيارات", true);
+    updateMetaTag("og:site_name", client.shortName, true);
 
     // Twitter
     updateMetaTag("twitter:card", "summary_large_image");
@@ -68,8 +72,8 @@ export const useSEO = ({
     updateMetaTag("twitter:description", description);
     updateMetaTag("twitter:image", image);
 
-    // Theme
-    updateMetaTag("theme-color", "#0F5C4C");
+    // Theme color
+    updateMetaTag("theme-color", client.primaryColor);
 
     // Canonical
     let canonical = document.querySelector(
@@ -102,7 +106,11 @@ export const useSEO = ({
     }
 
     return () => {
-      existingScripts.forEach((script) => script.remove());
+      document
+        .querySelectorAll(
+          'script[type="application/ld+json"][data-seo="true"]'
+        )
+        .forEach((script) => script.remove());
     };
   }, [
     title,
@@ -114,3 +122,4 @@ export const useSEO = ({
     structuredData,
   ]);
 };
+

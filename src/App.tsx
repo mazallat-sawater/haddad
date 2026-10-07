@@ -1,127 +1,155 @@
+
 import { lazy, Suspense } from "react";
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+
 import FloatingButtons from "./components/FloatingButtons";
 
-// ===============================
-// วแีÝอษ วแัฦํำํษ
-// ===============================
+// ========================================
+// ุงูุตูุญุฉ ุงูุฑุฆูุณูุฉ
+// ========================================
+
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// ===============================
-// วแใูแวส
-// ===============================
+// ========================================
+// ุงูู…ุธูุงุช
+// ========================================
+
 const CanopiesPage = lazy(
   () => import("./pages/CanopiesPage")
 );
+
 const CarCanopiesPage = lazy(
   () => import("./pages/CarCanopiesPage")
 );
+
 const GardenCanopiesPage = lazy(
   () => import("./pages/GardenCanopiesPage")
 );
+
 const SchoolCanopiesPage = lazy(
   () => import("./pages/SchoolCanopiesPage")
 );
+
 const FrenchArchCanopiesPage = lazy(
   () => import("./pages/FrenchArchCanopiesPage")
 );
+
 const PyramidalCarCanopiesPage = lazy(
   () => import("./pages/PyramidalCarCanopiesPage")
 );
 
-// ===============================
-// วแำๆวสั
-// ===============================
+// ========================================
+// ุงูุณูุงุชุฑ
+// ========================================
+
 const ShuttersPage = lazy(
   () => import("./pages/ShuttersPage")
 );
+
 const LaserShuttersPage = lazy(
   () => import("./pages/LaserShuttersPage")
 );
+
 const FencingShuttersPage = lazy(
   () => import("./pages/FencingShuttersPage")
 );
 
-// ===============================
-// วแศัฬๆแวส ๆวแสแศํำวส วแฮิศํษ
-// ===============================
+// ========================================
+// ุงูุจุฑุฌููุงุช ูุงูุชูุจูุณุงุช
+// ========================================
+
 const PergolasPage = lazy(
   () => import("./pages/PergolasPage")
 );
+
 const WoodCladdingPage = lazy(
   () => import("./pages/WoodCladdingPage")
 );
 
-// ===============================
-// วแส฿ำํวส
-// ===============================
+// ========================================
+// ุงูุชูุจูุณุงุช ูุงููุงุฌูุงุช
+// ========================================
+
 const CladdingPage = lazy(
   () => import("./pages/CladdingPage")
 );
+
 const CladdingFacadesPage = lazy(
   () => import("./pages/CladdingFacadesPage")
 );
+
 const DoorsPage = lazy(
   () => import("./pages/DoorsPage")
 );
 
-// ===============================
-// วแๅไวฬั
-// ===============================
+// ========================================
+// ุงูููุงุฌุฑ ูุงูู…ุณุชูุฏุนุงุช
+// ========================================
+
 const WarehousesPage = lazy(
   () => import("./pages/WarehousesPage")
 );
+
 const WarehousesDetailPage = lazy(
   () => import("./pages/WarehousesDetailPage")
 );
+
 const SandwichPanelPage = lazy(
   () => import("./pages/SandwichPanelPage")
 );
+
 const SandwichWarehousesPage = lazy(
   () => import("./pages/SandwichWarehousesPage")
 );
+
 const FabricHousesPage = lazy(
   () => import("./pages/FabricHousesPage")
 );
 
-// ===============================
-// วแิศๆ฿
-// ===============================
+// ========================================
+// ุงูุดุจูู ูุงูุชุณููุฑ
+// ========================================
+
 const FencingPage = lazy(
   () => import("./pages/FencingPage")
 );
+
 const BuildingFencingPage = lazy(
   () => import("./pages/BuildingFencingPage")
 );
 
-// ===============================
-// วแÞัวใํฯ
-// ===============================
+// ========================================
+// ุงูุฃุณูู
+// ========================================
+
 const RoofingTilesPage = lazy(
   () => import("./pages/RoofingTilesPage")
 );
 
-// ===============================
+// ========================================
 // React Query
-// ===============================
+// ========================================
 
 const queryClient = new QueryClient();
 
-// ===============================
-// ิวิษ วแสอใํแ
-// ===============================
+// ========================================
+// ุดุงุดุฉ ุงูุชุญู…ูู
+// ========================================
 
 const LoadingFallback = () => (
   <div
@@ -132,15 +160,15 @@ const LoadingFallback = () => (
       <div className="mx-auto mb-4 h-16 w-16 animate-spin rounded-full border-4 border-primary border-t-transparent" />
 
       <p className="text-lg text-secondary">
-        ฬวัํ วแสอใํแ...
+        ุฌุงุฑู ุงูุชุญู…ูู...
       </p>
     </div>
   </div>
 );
 
-// ===============================
-// วแสุศํÞ
-// ===============================
+// ========================================
+// ุงูุชุทุจูู
+// ========================================
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -152,134 +180,153 @@ const App = () => (
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
 
-            {/* =========================
-                วแีÝอษ วแัฦํำํษ
-            ========================= */}
-
+            {/* ุงูุตูุญุฉ ุงูุฑุฆูุณูุฉ */}
             <Route
               path="/"
               element={<Index />}
             />
 
-            {/* =========================
-                วแใูแวส
-            ========================= */}
+            {/* ================================
+                ุงูู…ุธูุงุช
+            ================================= */}
+
             <Route
               path="/canopies"
               element={<CanopiesPage />}
             />
+
             <Route
               path="/car-canopies"
               element={<CarCanopiesPage />}
             />
+
             <Route
               path="/garden-canopies"
               element={<GardenCanopiesPage />}
             />
+
             <Route
               path="/school-canopies"
               element={<SchoolCanopiesPage />}
             />
+
             <Route
               path="/french-arch-canopies"
               element={<FrenchArchCanopiesPage />}
             />
+
             <Route
               path="/pyramidal-car-canopies"
               element={<PyramidalCarCanopiesPage />}
             />
 
-            {/* =========================
-                วแำๆวสั
-            ========================= */}
+            {/* ================================
+                ุงูุณูุงุชุฑ
+            ================================= */}
+
             <Route
               path="/shutters"
               element={<ShuttersPage />}
             />
+
             <Route
               path="/laser-shutters"
               element={<LaserShuttersPage />}
             />
+
             <Route
               path="/fencing-shutters"
               element={<FencingShuttersPage />}
             />
 
-            {/* =========================
-                วแศัฬๆแวส ๆวแสแศํำวส วแฮิศํษ
-            ========================= */}
+            {/* ================================
+                ุงูุจุฑุฌููุงุช ูุงูุชูุจูุณุงุช
+            ================================= */}
+
             <Route
               path="/pergolas"
               element={<PergolasPage />}
             />
+
             <Route
               path="/wood-cladding"
               element={<WoodCladdingPage />}
             />
 
-            {/* =========================
-                วแส฿ำํวส
-            ========================= */}
+            {/* ================================
+                ุงูุชูุจูุณุงุช ูุงููุงุฌูุงุช
+            ================================= */}
+
             <Route
               path="/cladding"
               element={<CladdingPage />}
             />
+
             <Route
               path="/cladding-facades"
               element={<CladdingFacadesPage />}
             />
+
             <Route
               path="/doors"
               element={<DoorsPage />}
             />
 
-            {/* =========================
-                วแๅไวฬั
-            ========================= */}
+            {/* ================================
+                ุงูููุงุฌุฑ ูุงูู…ุณุชูุฏุนุงุช
+            ================================= */}
+
             <Route
               path="/warehouses"
               element={<WarehousesPage />}
             />
+
             <Route
               path="/warehouses-detail"
               element={<WarehousesDetailPage />}
             />
+
             <Route
               path="/sandwich-panel"
               element={<SandwichPanelPage />}
             />
+
             <Route
               path="/sandwich-warehouses"
               element={<SandwichWarehousesPage />}
             />
+
             <Route
               path="/fabric-houses"
               element={<FabricHousesPage />}
             />
 
-            {/* =========================
-                วแิศๆ฿
-            ========================= */}
+            {/* ================================
+                ุงูุดุจูู ูุงูุชุณููุฑ
+            ================================= */}
+
             <Route
               path="/fencing"
               element={<FencingPage />}
             />
+
             <Route
               path="/building-fencing"
               element={<BuildingFencingPage />}
             />
 
-            {/* =========================
-                วแÞัวใํฯ
-            ========================= */}
+            {/* ================================
+                ุงูุฃุณูู
+            ================================= */}
+
             <Route
               path="/roofing-tiles"
               element={<RoofingTilesPage />}
             />
 
-            {/* =========================
-                รํ ัวศุ Ûํั ใๆฬๆฯ
-            ========================= */}
+            {/* ================================
+                ุฃู ู…ุณุงุฑ ุบูุฑ ู…ูุฌูุฏ
+            ================================= */}
 
             <Route
               path="*"
@@ -289,7 +336,7 @@ const App = () => (
           </Routes>
         </Suspense>
 
-        {/* ราัวั วแวสีวแ วแฺวฦใษ */}
+        {/* ุฃุฒุฑุงุฑ ุงูุชูุงุตู ุงูุนุงุฆู…ุฉ */}
         <FloatingButtons />
 
       </BrowserRouter>
@@ -298,4 +345,3 @@ const App = () => (
 );
 
 export default App;
-

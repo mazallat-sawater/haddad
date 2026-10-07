@@ -1,15 +1,23 @@
+
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ServiceGallery } from "@/components/ServiceGallery";
+
 import { contactLinks, client } from "@/config/client";
+
 import {
   getServiceGalleryPaths,
   getServiceHeroPath,
   type ServiceDefinition,
 } from "@/config/services";
+
 import { useSEO } from "@/hooks/useSEO";
 import { assetPath } from "@/lib/assetPath";
-import { seoData, generateStructuredData } from "@/utils/seo/seoData";
+import {
+  seoData,
+  generateStructuredData,
+} from "@/utils/seo/seoData";
+
 import {
   Phone,
   MessageCircle,
@@ -32,16 +40,21 @@ export const ServicePageTemplate = ({
     return (
       <div
         dir="rtl"
-        className="flex min-h-screen items-center justify-center bg-ivory px-4 text-center"
+        className="flex min-h-screen items-center justify-center bg-[#F5F3ED] px-4 text-center"
       >
         <div>
-          <h1 className="mb-3 text-2xl font-extrabold text-charcoal">
+          <h1 className="mb-3 text-2xl font-extrabold text-[#171717]">
             الصفحة غير متاحة
           </h1>
-          <p className="mb-6 text-charcoal-soft">
+
+          <p className="mb-6 text-[#171717]/60">
             عذراً، لم يتم العثور على بيانات هذا القسم.
           </p>
-          <a href="/" className="btn-luxury inline-flex">
+
+          <a
+            href="/"
+            className="btn-luxury inline-flex"
+          >
             العودة للرئيسية
           </a>
         </div>
@@ -55,16 +68,20 @@ export const ServicePageTemplate = ({
   const heroImage = getServiceHeroPath(service);
   const galleryImages = getServiceGalleryPaths(service);
 
-  // إذا لم توجد بيانات SEO، لا نوقف الصفحة
   useSEO({
     title: seoInfo?.title || service.title,
+
     description:
       seoInfo?.description ||
       service.introDescription ||
-      `${service.title} في مكة المكرمة والمدينة المنورة`,
-    keywords: seoInfo?.keywords || [],
+      `${service.title} في ${client.serviceAreas.join(" و")}`,
+
+    keywords: seoInfo?.keywords,
+
     url: seoInfo?.url || client.siteUrl,
-    image: `${client.siteUrl}${heroImage}`,
+
+    image: `${client.siteUrl.replace(/\/$/, "")}${heroImage}`,
+
     structuredData: seoInfo
       ? generateStructuredData(
           service.id,
@@ -77,33 +94,38 @@ export const ServicePageTemplate = ({
   return (
     <div
       dir="rtl"
-      className="min-h-screen overflow-x-hidden bg-ivory text-charcoal"
+      className="min-h-screen overflow-x-hidden bg-[#F5F3ED] text-[#171717]"
     >
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-ivory pt-20 sm:pt-24">
+      <section className="relative overflow-hidden bg-[#F5F3ED] pt-20 sm:pt-24">
         <div className="grid lg:grid-cols-2">
           <div className="relative h-56 sm:h-72 lg:h-auto lg:min-h-[420px]">
             <img
               src={assetPath(heroImage)}
-              alt={service.title}
+              alt={`${service.title} - ${client.shortName}`}
               className="h-full w-full object-cover object-center"
               fetchPriority="high"
-              onError={(e) => {
-                e.currentTarget.style.display = "none";
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
               }}
             />
+
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#171717]/40 to-transparent" />
           </div>
 
           <div className="flex items-center px-4 py-10 sm:px-8 sm:py-14 lg:px-12">
             <div className="w-full max-w-xl">
               <div className="section-badge mb-6">
-                <HardHat size={14} className="shrink-0 text-bronze" />
+                <HardHat
+                  size={14}
+                  className="shrink-0 text-[#C9A227]"
+                />
                 <span>{service.badge}</span>
               </div>
 
-              <h1 className="section-title mb-5 text-charcoal">
+              <h1 className="section-title mb-5 text-[#171717]">
                 {service.title}
 
                 <span className="mt-2 block text-gradient-luxury">
@@ -122,8 +144,13 @@ export const ServicePageTemplate = ({
                   rel="noopener noreferrer"
                   className="btn-luxury w-full sm:w-auto"
                 >
-                  <MessageCircle size={20} className="shrink-0" />
+                  <MessageCircle
+                    size={20}
+                    className="shrink-0"
+                  />
+
                   تواصل عبر واتساب
+
                   <Sparkles
                     size={16}
                     className="shrink-0 opacity-80"
@@ -136,8 +163,9 @@ export const ServicePageTemplate = ({
                 >
                   <Phone
                     size={20}
-                    className="shrink-0 text-bronze"
+                    className="shrink-0 text-[#C9A227]"
                   />
+
                   اتصل الآن
                 </a>
               </div>
@@ -166,14 +194,17 @@ export const ServicePageTemplate = ({
                 className="group premium-card p-5 sm:p-6"
               >
                 <div className="icon-new mb-4">
-                  <Award size={22} className="shrink-0" />
+                  <Award
+                    size={22}
+                    className="shrink-0"
+                  />
                 </div>
 
-                <h3 className="mb-2 text-base font-extrabold text-charcoal sm:text-lg">
+                <h3 className="mb-2 text-base font-extrabold text-[#171717] sm:text-lg">
                   {feature.title}
                 </h3>
 
-                <p className="text-sm leading-7 text-charcoal-soft/70">
+                <p className="text-sm leading-7 text-[#171717]/65">
                   {feature.description}
                 </p>
               </div>
@@ -193,7 +224,7 @@ export const ServicePageTemplate = ({
       )}
 
       {/* Service Types */}
-      <section className="section-padding bg-ivory">
+      <section className="section-padding bg-[#F5F3ED]">
         <div className="section-container">
           <div className="mb-10 text-center sm:mb-14">
             <h2 className="section-title">
@@ -211,11 +242,11 @@ export const ServicePageTemplate = ({
                 key={item.title}
                 className="premium-card p-5"
               >
-                <h3 className="mb-2 text-base font-extrabold text-charcoal">
+                <h3 className="mb-2 text-base font-extrabold text-[#171717]">
                   {item.title}
                 </h3>
 
-                <p className="text-sm leading-7 text-charcoal-soft/70">
+                <p className="text-sm leading-7 text-[#171717]/65">
                   {item.description}
                 </p>
               </div>
@@ -254,15 +285,15 @@ export const ServicePageTemplate = ({
                     }`}
                   >
                     {image && (
-                      <div className="overflow-hidden rounded-2xl border border-bronze/15 shadow-sm">
+                      <div className="overflow-hidden rounded-2xl border border-[#C9A227]/15 shadow-sm">
                         <img
                           src={assetPath(image)}
                           alt={section.title}
                           loading="lazy"
                           decoding="async"
                           className="aspect-[4/3] w-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.style.display = "none";
+                          onError={(event) => {
+                            event.currentTarget.style.display = "none";
                           }}
                         />
                       </div>
@@ -274,11 +305,11 @@ export const ServicePageTemplate = ({
                       isReversed ? "lg:[direction:rtl]" : ""
                     }`}
                   >
-                    <h3 className="mb-3 text-xl font-extrabold text-charcoal sm:text-2xl">
+                    <h3 className="mb-3 text-xl font-extrabold text-[#171717] sm:text-2xl">
                       {section.title}
                     </h3>
 
-                    <p className="text-sm leading-8 text-charcoal-soft/80 sm:text-base">
+                    <p className="text-sm leading-8 text-[#171717]/75 sm:text-base">
                       {section.description}
                     </p>
                   </div>
@@ -290,7 +321,7 @@ export const ServicePageTemplate = ({
       </section>
 
       {/* Benefits */}
-      <section className="section-padding bg-ivory">
+      <section className="section-padding bg-[#F5F3ED]">
         <div className="section-container">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div className="min-w-0">
@@ -308,14 +339,14 @@ export const ServicePageTemplate = ({
                     key={benefit}
                     className="flex items-start gap-3"
                   >
-                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-bronze/15">
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#C9A227]/15">
                       <CheckCircle2
                         size={14}
-                        className="text-bronze-dark"
+                        className="text-[#8A6A1F]"
                       />
                     </div>
 
-                    <span className="text-sm text-charcoal-soft/85 sm:text-base">
+                    <span className="text-sm text-[#171717]/75 sm:text-base">
                       {benefit}
                     </span>
                   </div>
@@ -325,10 +356,10 @@ export const ServicePageTemplate = ({
 
             <div className="relative min-w-0">
               {galleryImages[0] && (
-                <div className="overflow-hidden rounded-2xl border border-bronze/15 shadow-md">
+                <div className="overflow-hidden rounded-2xl border border-[#C9A227]/15 shadow-md">
                   <img
                     src={assetPath(galleryImages[0])}
-                    alt={service.title}
+                    alt={`${service.title} - ${client.shortName}`}
                     loading="lazy"
                     decoding="async"
                     className="aspect-[4/3] w-full object-cover sm:h-[380px]"
@@ -336,19 +367,19 @@ export const ServicePageTemplate = ({
                 </div>
               )}
 
-              <div className="mt-4 rounded-2xl border border-bronze/15 bg-white p-4 shadow-sm sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:max-w-[260px] lg:left-6">
+              <div className="mt-4 rounded-2xl border border-[#C9A227]/15 bg-white p-4 shadow-sm sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:max-w-[280px] lg:left-6">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-bronze text-white">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#C9A227] text-[#171717]">
                     <Award size={22} />
                   </div>
 
                   <div className="min-w-0">
-                    <div className="text-sm font-extrabold text-charcoal sm:text-base">
-                      ضمان شامل
+                    <div className="text-sm font-extrabold text-[#171717] sm:text-base">
+                      تنفيذ حسب الطلب
                     </div>
 
-                    <div className="text-xs text-charcoal-soft/65 sm:text-sm">
-                      على جميع الأعمال
+                    <div className="text-xs text-[#171717]/60 sm:text-sm">
+                      حلول مناسبة لطبيعة المشروع
                     </div>
                   </div>
                 </div>
@@ -359,12 +390,12 @@ export const ServicePageTemplate = ({
       </section>
 
       {/* Areas */}
-      <section className="border-y border-bronze/15 bg-white py-12 sm:py-16">
+      <section className="border-y border-[#C9A227]/15 bg-white py-12 sm:py-16">
         <div className="section-container text-center">
-          <MapPin className="mx-auto mb-4 h-9 w-9 text-bronze" />
+          <MapPin className="mx-auto mb-4 h-9 w-9 text-[#C9A227]" />
 
-          <h2 className="mb-3 text-xl font-extrabold text-charcoal sm:text-2xl">
-            نغطي مكة المكرمة والمدينة المنورة والمناطق المحيطة
+          <h2 className="mb-3 text-xl font-extrabold text-[#171717] sm:text-2xl">
+            نخدم {client.serviceAreas.join(" و")} والمناطق القريبة
           </h2>
 
           <p className="section-desc mx-auto mb-6">
@@ -375,7 +406,7 @@ export const ServicePageTemplate = ({
             {client.serviceAreas.map((area) => (
               <span
                 key={area}
-                className="rounded-full border border-bronze/20 bg-ivory px-3 py-1.5 text-xs font-semibold text-bronze-dark sm:text-sm"
+                className="rounded-full border border-[#C9A227]/20 bg-[#F5F3ED] px-3 py-1.5 text-xs font-semibold text-[#8A6A1F] sm:text-sm"
               >
                 {area}
               </span>
@@ -385,20 +416,24 @@ export const ServicePageTemplate = ({
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-charcoal">
+      <section className="section-padding bg-[#171717]">
         <div className="section-container text-center">
-          <div className="section-badge mb-5 border-bronze/30 bg-charcoal-soft text-bronze-light">
-            <HardHat size={14} className="shrink-0" />
+          <div className="section-badge mb-5 border-[#C9A227]/30 bg-[#292929] text-[#DDB735]">
+            <HardHat
+              size={14}
+              className="shrink-0"
+            />
+
             <span>ابدأ مشروعك الآن</span>
           </div>
 
           <h2 className="section-title mb-4 text-white">
-            جاهزون لتنفيذ مشروعك؟
+            جاهزون لمناقشة مشروعك؟
           </h2>
 
-          <p className="section-desc mx-auto mb-8 text-ivory/70">
-            احصل على عرض سعر مجاني ومعاينة فورية من{" "}
-            {client.companyName}
+          <p className="section-desc mx-auto mb-8 text-[#F5F3ED]/70">
+            تواصل معنا لمناقشة تفاصيل مشروعك والخدمات المناسبة
+            لاحتياجك في {client.serviceAreas.join(" و")}.
           </p>
 
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -408,15 +443,23 @@ export const ServicePageTemplate = ({
               rel="noopener noreferrer"
               className="btn-luxury w-full sm:w-auto"
             >
-              <MessageCircle size={20} className="shrink-0" />
-              اطلب عرض سعر مجاني
+              <MessageCircle
+                size={20}
+                className="shrink-0"
+              />
+
+              تواصل عبر واتساب
             </a>
 
             <a
               href={contactLinks.phone}
-              className="btn-modern w-full border-ivory/20 bg-white/10 text-white hover:bg-white/15 sm:w-auto"
+              className="btn-modern w-full border-white/20 bg-white/10 text-white hover:bg-white/15 sm:w-auto"
             >
-              <Phone size={20} className="shrink-0" />
+              <Phone
+                size={20}
+                className="shrink-0"
+              />
+
               اتصل بنا الآن
             </a>
           </div>
@@ -429,3 +472,4 @@ export const ServicePageTemplate = ({
 };
 
 export default ServicePageTemplate;
+

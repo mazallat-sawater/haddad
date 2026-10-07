@@ -1,4 +1,12 @@
-import { PhoneCall, MessageCircle, ArrowDown, Shield, CheckCircle } from "lucide-react";
+
+import {
+  PhoneCall,
+  MessageCircle,
+  ArrowDown,
+  CheckCircle,
+  Hammer,
+} from "lucide-react";
+
 import { client, contactLinks } from "@/config/client";
 import { assetPath } from "@/lib/assetPath";
 
@@ -7,101 +15,157 @@ export const Hero = () => {
     <section
       id="home"
       dir="rtl"
-      className="relative min-h-[calc(100dvh-72px)] overflow-hidden pt-20 sm:pt-24"
+      className="relative min-h-[calc(100dvh-72px)] overflow-hidden bg-[#1F2933] pt-20 sm:pt-24"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src={assetPath("/hero-bg.webp")}
-          alt={`${client.shortName} — مظلات وسواتر في ${client.city}`}
+          alt={`${client.shortName} — مظلات وسواتر وأعمال حدادة في ${client.city}`}
           className="h-full w-full object-cover"
           fetchPriority="high"
         />
       </div>
 
-      <div className="absolute inset-0 bg-pattern-dots opacity-40" aria-hidden="true" />
+      {/* Soft elegant overlay */}
       <div
-        className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-accent/15 blur-3xl"
+        className="absolute inset-0 bg-gradient-to-l from-[#1F2933]/90 via-[#1F2933]/65 to-[#526B5A]/25"
         aria-hidden="true"
       />
+
+      {/* Bottom overlay */}
       <div
-        className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1F2933]/90 to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* Gold and olive glow */}
+      <div
+        className="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-[#B88A2A]/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-[#526B5A]/15 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* Decorative lines */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#D6B56A]/50 to-transparent"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute left-10 top-32 hidden h-40 w-40 rounded-full border border-[#D6B56A]/20 lg:block"
         aria-hidden="true"
       />
 
       <div className="section-container relative z-10">
         <div className="flex min-h-[calc(100dvh-8rem)] items-center justify-start">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <div className="space-y-7">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-4 py-2">
-                <Shield size={16} className="text-[#D9A441]" style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }} />
-                <span className="text-sm font-bold text-[#FFF4DC]" style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }}>
+              {/* Tagline */}
+              <div className="inline-flex items-center gap-3 rounded-full border border-[#D6B56A]/40 bg-[#1F2933]/45 px-5 py-2.5 backdrop-blur-md">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#B88A2A]">
+                  <Hammer size={15} className="text-white" />
+                </div>
+
+                <span className="text-sm font-bold text-[#FAF9F6] sm:text-base">
                   {client.tagline}
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="text-4xl font-extrabold leading-tight text-[#FFF4DC] sm:text-5xl lg:text-6xl" style={{ textShadow: "3px 3px 6px rgba(62, 39, 35, 0.8)" }}>
+              {/* Main heading */}
+              <div className="space-y-5">
+                <h1 className="text-4xl font-black leading-[1.15] tracking-tight text-[#FAF9F6] sm:text-5xl lg:text-7xl">
                   {client.hero.title}
-                  <span className="mt-2 block text-[#D9A441]" style={{ textShadow: "3px 3px 6px rgba(62, 39, 35, 0.8)" }}>
+
+                  <span className="mt-3 block text-[#D6B56A]">
                     {client.hero.subtitle}
                   </span>
                 </h1>
-                <p className="max-w-xl text-lg leading-relaxed text-[#F8EBD0] sm:text-xl" style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }}>
+
+                <div className="h-1 w-24 rounded-full bg-[#B88A2A]" />
+
+                <p className="max-w-2xl text-lg leading-relaxed text-[#F1EEE7] sm:text-xl">
                   {client.hero.paragraph1}
                 </p>
               </div>
 
+              {/* Features */}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {["جودة عالية", "أسعار تنافسية", "تنفيذ سريع", "ضمان شامل"].map(
-                  (feature) => (
-                    <div
-                      key={feature}
-                      className="flex items-center gap-2 rounded-xl border border-white/40 bg-white/20 px-3 py-2 text-sm font-semibold text-[#FFF4DC] shadow-sm"
-                    >
-                      <CheckCircle size={16} className="shrink-0 text-[#D9A441]" style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }} />
-                      <span style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }}>{feature}</span>
-                    </div>
-                  )
-                )}
+                {[
+                  "أعمال حدادة",
+                  "تنفيذ حسب الطلب",
+                  "تصاميم متنوعة",
+                  "خدمة احترافية",
+                ].map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.08] px-3 py-3 text-sm font-semibold text-[#FAF9F6] backdrop-blur-md transition-all hover:border-[#D6B56A]/50 hover:bg-[#B88A2A]/10"
+                  >
+                    <CheckCircle
+                      size={17}
+                      className="shrink-0 text-[#D6B56A]"
+                    />
+
+                    <span>{feature}</span>
+                  </div>
+                ))}
               </div>
 
+              {/* CTA buttons */}
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href={contactLinks.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-accent w-full sm:w-auto"
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#B88A2A] px-7 py-4 font-bold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#D6B56A] hover:text-[#1F2933] hover:shadow-xl sm:w-auto"
                 >
-                  <MessageCircle size={20} className="shrink-0" />
-                  تواصل عبر واتساب
+                  <MessageCircle
+                    size={21}
+                    className="transition-transform group-hover:scale-110"
+                  />
+
+                  <span>تواصل عبر واتساب</span>
                 </a>
-                <a href={contactLinks.phone} className="btn-primary w-full sm:w-auto">
-                  <PhoneCall size={20} className="shrink-0" />
-                  اتصل الآن
+
+                <a
+                  href={contactLinks.phone}
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl border border-[#D6B56A]/60 bg-[#1F2933]/35 px-7 py-4 font-bold text-[#FAF9F6] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#D6B56A] hover:bg-[#526B5A]/40 sm:w-auto"
+                >
+                  <PhoneCall
+                    size={21}
+                    className="text-[#D6B56A] transition-transform group-hover:scale-110"
+                  />
+
+                  <span>اتصل الآن</span>
                 </a>
               </div>
 
-              <div className="border-t border-white/40 pt-4">
-                <p className="text-sm font-semibold text-[#E8D5B5]" style={{ textShadow: "2px 2px 4px rgba(62, 39, 35, 0.8)" }}>
-                  نخدم: {client.serviceAreas.join(" · ")}
+              {/* Service areas */}
+              <div className="border-t border-white/15 pt-5">
+                <p className="text-sm font-semibold text-[#E5E1D8]">
+                  <span className="text-[#D6B56A]">نخدم:</span>{" "}
+                  {client.serviceAreas.join(" · ")}
                 </p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
+      {/* Scroll indicator */}
       <a
         href="#services"
         className="group absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
         aria-label="الانتقال إلى الخدمات"
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-primary/20 bg-white shadow-lg transition-all hover:scale-110 hover:border-accent">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#D6B56A]/50 bg-[#1F2933]/70 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[#D6B56A] hover:bg-[#B88A2A]">
           <ArrowDown
-            size={24}
-            className="text-primary transition-transform group-hover:translate-y-1"
+            size={23}
+            className="text-[#D6B56A] transition-all group-hover:translate-y-1 group-hover:text-white"
           />
         </div>
       </a>
@@ -110,3 +174,4 @@ export const Hero = () => {
 };
 
 export default Hero;
+

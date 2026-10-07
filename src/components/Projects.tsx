@@ -1,5 +1,14 @@
-import { ArrowLeft, Building2, MapPin, Calendar, CheckCircle } from "lucide-react";
+
+import {
+  ArrowLeft,
+  Building2,
+  MapPin,
+  Calendar,
+  CheckCircle,
+} from "lucide-react";
+
 import { Link } from "react-router-dom";
+
 import { client } from "@/config/client";
 import { assetPath } from "@/lib/assetPath";
 
@@ -14,19 +23,31 @@ const galleryImages = [
 
 export const Projects = () => {
   return (
-    <section id="projects" className="section-padding relative overflow-hidden bg-background">
+    <section
+      id="projects"
+      className="section-padding relative overflow-hidden bg-background"
+      dir="rtl"
+    >
       <div className="section-container relative z-10">
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <div className="section-badge mb-5">
-            <Building2 size={14} className="shrink-0 text-accent" />
-            <span>مشاريعنا</span>
+            <Building2
+              size={14}
+              className="shrink-0 text-accent"
+            />
+            <span>أعمالنا</span>
           </div>
+
           <h2 className="section-title mb-4">
-            مشاريع مميزة
-            <span className="mt-2 block text-gradient-luxury">نفخر بتنفيذها</span>
+            نماذج من مشاريعنا
+            <span className="mt-2 block text-gradient-luxury">
+              تنفيذات متنوعة
+            </span>
           </h2>
+
           <p className="section-desc mx-auto">
-            نماذج من أعمالنا في المظلات والسواتر والبرجولات والهناجر في مكة المكرمة والمدينة المنورة
+            نماذج من أعمالنا في المظلات والسواتر والبرجولات والهناجر
+            وأعمال الحدادة في {client.serviceAreas.join(" و")}.
           </p>
         </div>
 
@@ -39,8 +60,10 @@ export const Projects = () => {
             >
               <div className="h-52 overflow-hidden sm:h-56">
                 <img
-                  src={assetPath(galleryImages[index % galleryImages.length])}
-                  alt={`مشروع ${project.title}`}
+                  src={assetPath(
+                    galleryImages[index % galleryImages.length]
+                  )}
+                  alt={`${project.title} - ${client.shortName}`}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   loading="lazy"
                   decoding="async"
@@ -52,21 +75,32 @@ export const Projects = () => {
               <div className="p-4 sm:p-5">
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-1 rounded-full border border-accent/25 bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent-dark">
-                    <CheckCircle size={11} className="shrink-0" />
-                    مشروع منفذ
+                    <CheckCircle
+                      size={11}
+                      className="shrink-0"
+                    />
+                    من أعمالنا
                   </span>
+
                   <span className="inline-flex items-center gap-1 rounded-full border border-primary/15 bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-secondary">
-                    <MapPin size={11} className="shrink-0 text-accent" />
-                      مكة المكرمة
-                    </span>
+                    <MapPin
+                      size={11}
+                      className="shrink-0 text-accent"
+                    />
+                    {client.serviceAreas.join(" · ")}
+                  </span>
                 </div>
 
                 <h3 className="mb-1 text-lg font-extrabold text-primary sm:text-xl">
                   {project.title}
                 </h3>
+
                 <div className="mb-3 flex items-center gap-1.5 text-xs text-secondary-light">
-                  <Calendar size={12} className="shrink-0" />
-                  تم التنفيذ
+                  <Calendar
+                    size={12}
+                    className="shrink-0"
+                  />
+                  تنفيذ حسب المشروع
                 </div>
 
                 <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-secondary">
@@ -75,6 +109,7 @@ export const Projects = () => {
 
                 <div className="flex items-center gap-2 border-t border-primary/10 pt-4 text-sm font-bold text-primary transition-colors group-hover:text-accent-dark">
                   عرض التفاصيل
+
                   <ArrowLeft
                     size={16}
                     className="shrink-0 transition-transform group-hover:-translate-x-1"
@@ -86,9 +121,16 @@ export const Projects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <a href="#portfolio" className="btn-accent inline-flex">
+          <a
+            href="#portfolio"
+            className="btn-accent inline-flex"
+          >
             استعرض معرض الصور
-            <ArrowLeft size={18} className="shrink-0" />
+
+            <ArrowLeft
+              size={18}
+              className="shrink-0"
+            />
           </a>
         </div>
       </div>
@@ -97,3 +139,4 @@ export const Projects = () => {
 };
 
 export default Projects;
+

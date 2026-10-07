@@ -4,9 +4,12 @@ import {
   Menu,
   X,
   ArrowLeft,
+  Hammer,
 } from "lucide-react";
+
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { contactLinks, client } from "@/config/client";
 import { assetPath } from "@/lib/assetPath";
 
@@ -20,15 +23,26 @@ const navItems = [
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
+
   const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -36,11 +50,8 @@ const Header = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -48,13 +59,27 @@ const Header = () => {
 
   const scrollToHash = (hash: string) => {
     if (hash === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
       return;
     }
+
     const element = document.querySelector(hash);
+
     if (!element) return;
-    const offset = element.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: offset, behavior: "smooth" });
+
+    const offset =
+      element.getBoundingClientRect().top +
+      window.scrollY -
+      90;
+
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth",
+    });
   };
 
   const handleNavigation = (
@@ -67,10 +92,15 @@ const Header = () => {
     if (hash === "#home") {
       if (isHome) {
         navigate("/", { replace: true });
-        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       } else {
         navigate("/");
       }
+
       return;
     }
 
@@ -84,16 +114,29 @@ const Header = () => {
 
   useEffect(() => {
     if (!isHome || !location.hash) return;
-    const timer = setTimeout(() => scrollToHash(location.hash), 200);
-    return () => clearTimeout(timer);
+
+    const timer = setTimeout(() => {
+      scrollToHash(location.hash);
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isHome, location.hash]);
 
-  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleLogoClick = (
+    event: MouseEvent<HTMLAnchorElement>
+  ) => {
     event.preventDefault();
     setOpen(false);
+
     if (isHome) {
       navigate("/", { replace: true });
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     } else {
       navigate("/");
     }
@@ -103,36 +146,43 @@ const Header = () => {
     <header
       dir="rtl"
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-2" : "py-4"
+        scrolled ? "py-2" : "py-3"
       }`}
     >
+      {/* Header background */}
       <div
         className={`absolute inset-x-0 top-0 -z-10 h-full transition-all duration-300 ${
           scrolled
-            ? "border-b border-primary/10 bg-white/95 shadow-[0_4px_20px_rgba(30,58,95,0.08)] backdrop-blur-xl"
-            : "bg-white/90 backdrop-blur-md"
+            ? "border-b border-[#C9A227]/20 bg-[#171717]/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+            : "bg-[#171717]/90 backdrop-blur-md"
         }`}
       />
 
       <div className="section-container">
         <div className="flex items-center justify-between gap-4">
-          {/* Logo */}
+          {/* Logo / Brand */}
           <Link
             to="/"
             onClick={handleLogoClick}
             className="group relative flex shrink-0 items-center gap-3"
             aria-label="العودة إلى الصفحة الرئيسية"
           >
-            <img
-              src={assetPath("/logo.svg")}
-              alt={client.shortName}
-              className="h-12 w-12 transition-all duration-300 group-hover:scale-105"
-            />
+            <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-[#C9A227]/40 bg-[#C9A227]/10">
+              <img
+                src={assetPath("/logo.svg")}
+                alt={client.shortName}
+                className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+
+              <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/5" />
+            </div>
+
             <div className="hidden sm:block">
-              <h1 className="text-lg font-extrabold leading-tight text-primary">
+              <h1 className="text-base font-extrabold leading-tight text-[#F5F3ED]">
                 {client.shortName}
               </h1>
-              <p className="text-xs font-semibold text-secondary-light">
+
+              <p className="mt-0.5 max-w-[260px] truncate text-[11px] font-medium text-[#C9A227]">
                 {client.tagline}
               </p>
             </div>
@@ -140,13 +190,15 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center lg:flex">
-            <div className="flex items-center gap-1 rounded-xl bg-secondary/5 p-1">
+            <div className="flex items-center gap-1 rounded-2xl border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-md">
               {navItems.map((item) => (
                 <a
                   key={item.hash}
                   href={isHome ? item.hash : `/${item.hash}`}
-                  onClick={(e) => handleNavigation(e, item.hash)}
-                  className="rounded-lg px-5 py-2.5 text-sm font-bold text-secondary transition-all hover:bg-white hover:text-primary hover:shadow-sm"
+                  onClick={(event) =>
+                    handleNavigation(event, item.hash)
+                  }
+                  className="rounded-xl px-5 py-2.5 text-sm font-bold text-[#D8D4CA] transition-all duration-200 hover:bg-[#C9A227]/10 hover:text-[#C9A227]"
                 >
                   {item.label}
                 </a>
@@ -154,43 +206,57 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Contact Buttons */}
-          <div className="hidden items-center gap-3 md:flex">
+          {/* Desktop Contact Buttons */}
+          <div className="hidden items-center gap-2 md:flex">
             <a
               href={contactLinks.phone}
-              className="flex h-11 items-center gap-2 rounded-lg border-2 border-primary/20 bg-white px-4 text-sm font-bold text-primary transition-all hover:border-primary hover:bg-primary/5"
+              className="flex h-11 items-center gap-2 rounded-xl border border-[#C9A227]/40 bg-white/[0.04] px-4 text-sm font-bold text-[#F5F3ED] transition-all duration-300 hover:border-[#C9A227] hover:bg-[#C9A227]/10"
             >
-              <PhoneCall size={18} className="shrink-0" />
-              <span className="hidden sm:inline">اتصال</span>
+              <PhoneCall
+                size={18}
+                className="text-[#C9A227]"
+              />
+
+              <span className="hidden sm:inline">
+                اتصال
+              </span>
             </a>
+
             <a
               href={contactLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 items-center gap-2 rounded-lg bg-gradient-to-r from-accent-light via-accent to-accent-dark px-5 text-sm font-bold text-primary-dark shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              className="flex h-11 items-center gap-2 rounded-xl bg-[#C9A227] px-5 text-sm font-extrabold text-[#171717] shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DDB735] hover:shadow-xl"
             >
-              <MessageCircle size={18} className="shrink-0" />
-              <span className="hidden sm:inline">واتساب</span>
+              <MessageCircle size={18} />
+
+              <span className="hidden sm:inline">
+                واتساب
+              </span>
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
+            onClick={() => setOpen((value) => !value)}
+            aria-label={
+              open ? "إغلاق القائمة" : "فتح القائمة"
+            }
             aria-expanded={open}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border-2 border-primary/20 bg-white text-primary transition-all hover:border-primary hover:bg-primary/5 lg:hidden"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C9A227]/40 bg-white/[0.04] text-[#F5F3ED] transition-all hover:border-[#C9A227] hover:bg-[#C9A227]/10 lg:hidden"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile Overlay */}
       <div
-        className={`fixed inset-0 top-[72px] z-40 bg-secondary/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 top-[68px] z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          open
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpen(false)}
         aria-hidden="true"
@@ -198,49 +264,87 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-x-0 top-[72px] z-50 max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-primary/10 bg-white shadow-2xl transition-all duration-300 lg:hidden ${
-          open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"
+        className={`fixed inset-x-0 top-[68px] z-50 max-h-[calc(100dvh-68px)] overflow-y-auto border-t border-[#C9A227]/20 bg-[#171717] shadow-2xl transition-all duration-300 lg:hidden ${
+          open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
         <nav className="section-container py-6">
+          {/* Mobile Brand */}
+          <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#C9A227]/40 bg-[#C9A227]/10">
+              <Hammer
+                size={20}
+                className="text-[#C9A227]"
+              />
+            </div>
+
+            <div>
+              <p className="font-extrabold text-[#F5F3ED]">
+                {client.shortName}
+              </p>
+
+              <p className="mt-1 text-xs text-[#C9A227]">
+                {client.serviceAreas.join(" · ")}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation */}
           <div className="space-y-2">
             {navItems.map((item) => (
               <a
                 key={item.hash}
                 href={isHome ? item.hash : `/${item.hash}`}
-                onClick={(e) => handleNavigation(e, item.hash)}
-                className="flex items-center justify-between rounded-lg border-2 border-primary/10 bg-secondary/5 px-5 py-4 text-base font-bold text-secondary transition-all hover:border-primary/20 hover:bg-primary/5 hover:text-primary"
+                onClick={(event) =>
+                  handleNavigation(event, item.hash)
+                }
+                className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4 text-base font-bold text-[#E7E4DC] transition-all hover:border-[#C9A227]/40 hover:bg-[#C9A227]/10 hover:text-[#C9A227]"
               >
                 <span>{item.label}</span>
-                <ArrowLeft size={20} className="text-primary" />
+
+                <ArrowLeft
+                  size={20}
+                  className="text-[#C9A227]"
+                />
               </a>
             ))}
           </div>
 
+          {/* Mobile Contact */}
           <div className="mt-6 space-y-3">
             <a
               href={contactLinks.phone}
-              className="flex h-14 items-center justify-center gap-3 rounded-lg border-2 border-primary/20 bg-white text-base font-bold text-primary transition-all hover:border-primary hover:bg-primary/5"
+              className="flex h-14 items-center justify-center gap-3 rounded-xl border border-[#C9A227]/40 bg-white/[0.04] text-base font-bold text-[#F5F3ED] transition-all hover:border-[#C9A227] hover:bg-[#C9A227]/10"
             >
-              <PhoneCall size={20} />
+              <PhoneCall
+                size={20}
+                className="text-[#C9A227]"
+              />
+
               اتصل بنا
             </a>
+
             <a
               href={contactLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-14 items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-accent-light via-accent to-accent-dark text-base font-bold text-primary-dark shadow-lg transition-all hover:shadow-xl"
+              className="flex h-14 items-center justify-center gap-3 rounded-xl bg-[#C9A227] text-base font-extrabold text-[#171717] shadow-lg transition-all hover:bg-[#DDB735] hover:shadow-xl"
             >
               <MessageCircle size={20} />
+
               تواصل عبر واتساب
             </a>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-primary/10 text-center">
-            <p className="text-sm font-semibold text-secondary">
-              {client.phone}
+          {/* Phone / Areas */}
+          <div className="mt-6 border-t border-white/10 pt-6 text-center">
+            <p className="text-sm font-bold text-[#F5F3ED]">
+              {client.phoneDisplay}
             </p>
-            <p className="text-xs text-secondary-light mt-1">
+
+            <p className="mt-2 text-xs font-medium text-[#C9A227]">
               {client.serviceAreas.join(" · ")}
             </p>
           </div>

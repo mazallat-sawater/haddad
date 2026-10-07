@@ -1,54 +1,55 @@
-import featuresBg from "@/assets/features-bg-new.jpg";
+
 import { assetPath } from "@/lib/assetPath";
+import { client } from "@/config/client";
 
 const features = [
   {
     image: "/canopies/1.webp",
     title: "جودة في التنفيذ",
     description:
-      "نحرص على تنفيذ الأعمال بجودة عالية واختيار الخامات المناسبة لكل مشروع.",
+      "نحرص على تنفيذ الأعمال بدقة واختيار الخامات المناسبة لطبيعة كل مشروع.",
   },
   {
     image: "/fencing/1.webp",
-    title: "تصاميم متنوعة",
+    title: "أعمال حدادة متنوعة",
     description:
-      "حلول وتصاميم متعددة تناسب المنازل والفلل والاستراحات والمنشآت.",
+      "تنفيذ أعمال الحدادة والهياكل المعدنية والمظلات والسواتر حسب احتياج المشروع.",
   },
   {
     image: "/Pergolas1/1.webp",
     title: "تنفيذ حسب الموقع",
     description:
-      "ننفذ كل مشروع وفق المساحة وطبيعة الموقع والاحتياج الفعلي للعميل.",
+      "ننفذ كل مشروع وفق المساحة وطبيعة الموقع والمقاسات والاحتياج الفعلي للعميل.",
   },
   {
     image: "/shutters/1.webp",
-    title: "خامات مناسبة",
+    title: "تصاميم متعددة",
     description:
-      "نوفر خيارات متعددة من الخامات المناسبة للاستخدام الخارجي والمشاريع المختلفة.",
+      "حلول وتصاميم متنوعة للمظلات والسواتر والبرجولات والمشاريع المختلفة.",
   },
   {
     image: "/WarehousesDetail1/1.webp",
-    title: "خبرة في المشاريع",
+    title: "حلول للمشاريع",
     description:
-      "حلول متكاملة للمنازل والمشاريع التجارية والمنشآت والمواقع المختلفة.",
-  },
-  {
-    image: "/pool-canopies/1.webp",
-    title: "خصوصية وحماية",
-    description:
-      "حلول عملية للمظلات والسواتر والشبوك تساعد على توفير الحماية والخصوصية.",
+      "تنفيذ حلول مناسبة للمنازل والفلل والاستراحات والمنشآت والمشاريع التجارية.",
   },
   {
     image: "/sandwich-warehouses/1.webp",
-    title: "حلول متكاملة",
+    title: "هناجر وهياكل معدنية",
     description:
-      "من المظلات والسواتر إلى الهناجر والكلادينج والشبوك والتسوير.",
+      "تنفيذ الهناجر والمستودعات والهياكل المعدنية وفق متطلبات المشروع.",
   },
   {
     image: "/Gallery1/1.webp",
-    title: "خدمة في الرياض",
+    title: "مظلات وسواتر",
     description:
-      "نقدم خدماتنا للعملاء في الرياض مع حلول مناسبة لمختلف أنواع المشاريع.",
+      "تنفيذ مظلات السيارات والحدائق والسواتر والشبوك بتصاميم متعددة.",
+  },
+  {
+    image: "/Gallery1/2.webp",
+    title: "خدمة في المنطقة الشرقية",
+    description:
+      `نقدم خدماتنا في ${client.serviceAreas.join(" و")} والمناطق القريبة حسب نطاق المشروع.`,
   },
 ];
 
@@ -57,60 +58,43 @@ export const Features = () => {
     <section
       id="features"
       dir="rtl"
-      className="relative overflow-hidden py-20 md:py-28"
-      style={{
-        backgroundImage: `url(${featuresBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative overflow-hidden bg-[#171717] py-20 md:py-28"
     >
-      {/* طبقة الخلفية */}
-      <div className="absolute inset-0 bg-white/90 backdrop-blur-sm" />
-
-      {/* تأثيرات ذهبية */}
+      {/* تأثيرات خلفية */}
       <div
-        className="absolute -right-32 -top-32 h-96 w-96 rounded-full opacity-10 blur-3xl"
-        style={{ backgroundColor: "#d1a347" }}
+        className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#C9A227]/10 blur-3xl"
+        aria-hidden="true"
       />
 
       <div
-        className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full opacity-10 blur-3xl"
-        style={{ backgroundColor: "#d1a347" }}
+        className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[#C9A227]/10 blur-3xl"
+        aria-hidden="true"
       />
 
       <div className="container relative z-10 mx-auto px-4">
         {/* عنوان القسم */}
         <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
           <div className="mb-5 flex items-center justify-center gap-4">
-            <div
-              className="h-px w-16 md:w-24"
-              style={{ backgroundColor: "#d1a347" }}
-            />
+            <div className="h-px w-16 bg-[#C9A227] md:w-24" />
 
-            <span
-              className="text-sm font-bold tracking-[0.15em]"
-              style={{ color: "#b88a2d" }}
-            >
-              لماذا ربوع البلاد؟
+            <span className="text-sm font-bold tracking-[0.15em] text-[#DDB735]">
+              لماذا تختارنا؟
             </span>
 
-            <div
-              className="h-px w-16 md:w-24"
-              style={{ backgroundColor: "#d1a347" }}
-            />
+            <div className="h-px w-16 bg-[#C9A227] md:w-24" />
           </div>
 
-          <h2
-            className="mb-5 text-3xl font-black leading-tight md:text-5xl"
-            style={{ color: "#b88a2d" }}
-          >
-            جودة وخبرة وحلول متكاملة
+          <h2 className="mb-5 text-3xl font-black leading-tight text-[#F5F3ED] md:text-5xl">
+            تنفيذ يهتم بالتفاصيل
+            <span className="mt-2 block text-[#DDB735]">
+              وحلول تناسب مشروعك
+            </span>
           </h2>
 
-          <p className="mx-auto max-w-2xl text-base leading-8 text-gray-700 md:text-lg">
-            نقدم حلولًا متخصصة في المظلات والسواتر والهناجر والبرجولات
-            والكلادينج والشبوك وتسوير المباني بما يناسب احتياجات العملاء
-            والمشاريع في الرياض.
+          <p className="mx-auto max-w-2xl text-base leading-8 text-[#d7d4cc] md:text-lg">
+            نقدم حلولًا متنوعة في المظلات والسواتر والبرجولات والهناجر
+            والشبوك وأعمال الحدادة والهياكل المعدنية في{" "}
+            {client.serviceAreas.join(" و")}.
           </p>
         </div>
 
@@ -121,12 +105,12 @@ export const Features = () => {
               key={feature.title}
               className="group relative h-full"
             >
-              <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+              <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#292929] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A227]/50 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                 {/* الصورة */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={assetPath(feature.image)}
-                    alt={`${feature.title} - ربوع البلاد`}
+                    alt={`${feature.title} - ${client.shortName}`}
                     loading="lazy"
                     decoding="async"
                     width="800"
@@ -135,78 +119,52 @@ export const Features = () => {
                   />
 
                   {/* التدرج */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
 
                   {/* الرقم */}
-                  <div
-                    className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl text-sm font-black shadow-xl transition-all duration-500 group-hover:rotate-6 group-hover:scale-110"
-                    style={{
-                      backgroundColor: "#d1a347",
-                      color: "#111111",
-                    }}
-                  >
+                  <div className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#C9A227] text-sm font-black text-[#171717] shadow-xl transition-all duration-500 group-hover:rotate-6 group-hover:scale-110">
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
                   {/* إطار التحويم */}
-                  <div className="absolute inset-0 rounded-t-3xl border-2 border-transparent transition-all duration-500 group-hover:border-[#d1a347]/70" />
+                  <div className="absolute inset-0 rounded-t-3xl border-2 border-transparent transition-all duration-500 group-hover:border-[#C9A227]/70" />
                 </div>
 
                 {/* المحتوى */}
                 <div className="flex flex-1 flex-col p-6 md:p-7">
-                  <h3
-                    className="mb-4 text-center text-lg font-extrabold leading-8 md:text-xl"
-                    style={{ color: "#b88a2d" }}
-                  >
+                  <h3 className="mb-4 text-center text-lg font-extrabold leading-8 text-[#DDB735] md:text-xl">
                     {feature.title}
                   </h3>
 
                   <div className="mb-5 flex justify-center">
-                    <div
-                      className="h-1 w-12 rounded-full transition-all duration-500 group-hover:w-20"
-                      style={{ backgroundColor: "#d1a347" }}
-                    />
+                    <div className="h-1 w-12 rounded-full bg-[#C9A227] transition-all duration-500 group-hover:w-20" />
                   </div>
 
-                  <p className="mt-auto text-center text-sm leading-7 text-gray-600 md:text-base">
+                  <p className="mt-auto text-center text-sm leading-7 text-[#d7d4cc] md:text-base">
                     {feature.description}
                   </p>
                 </div>
 
                 {/* الخط السفلي */}
-                <div
-                  className="h-1 w-full transition-all duration-500 group-hover:h-2"
-                  style={{ backgroundColor: "#d1a347" }}
-                />
+                <div className="h-1 w-full bg-[#C9A227] transition-all duration-500 group-hover:h-2" />
               </div>
             </article>
           ))}
         </div>
 
-        {/* أسفل القسم */}
+        {/* مناطق الخدمة */}
         <div className="mt-14 text-center">
           <div className="mx-auto flex max-w-xl items-center justify-center gap-3">
-            <div
-              className="h-px flex-1"
-              style={{
-                backgroundColor: "#d1a347",
-                opacity: 0.4,
-              }}
-            />
+            <div className="h-px flex-1 bg-[#C9A227]/40" />
 
-            <div
-              className="h-2 w-2 rotate-45"
-              style={{ backgroundColor: "#d1a347" }}
-            />
+            <div className="h-2 w-2 rotate-45 bg-[#C9A227]" />
 
-            <div
-              className="h-px flex-1"
-              style={{
-                backgroundColor: "#d1a347",
-                opacity: 0.4,
-              }}
-            />
+            <div className="h-px flex-1 bg-[#C9A227]/40" />
           </div>
+
+          <p className="mt-5 text-sm font-bold text-[#DDB735]">
+            {client.serviceAreas.join(" · ")}
+          </p>
         </div>
       </div>
     </section>
@@ -214,3 +172,4 @@ export const Features = () => {
 };
 
 export default Features;
+

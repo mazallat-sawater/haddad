@@ -1,47 +1,93 @@
-/** بيانات مظلات وسواتر مكة والمدينة مظلات سيارات — مكة والمدينة */
+/**
+ * بيانات العميل الجديد
+ * مظلات وسواتر وأعمال حدادة - الدمام والخبر والقطيف
+ */
+
 export const client = {
-  companyName: "مظلات وسواتر مكة والمدينة مظلات سيارات",
-  shortName: "مظلات وسواتر مكة والمدينة",
-  ownerName: "م/حسام الرفيد",
+  companyName: "مظلات وسواتر وأعمال حدادة",
+  shortName: "مظلات وسواتر",
+  ownerName: "",
   designerName: "م/حسام الرفيد",
   designerWhatsapp: "967779098659",
-  tagline: "مظلات · سواتر · برجولات · هناجر",
-  city: "مكة المكرمة",
-  phone: "548561357",
-  phoneIntl: "966548561357",
-  phoneDisplay: "054 856 1357",
-  siteUrl: "https://canopies-makkah.com",
-  instagram: "",
-  mapsUrl: "https://maps.google.com/?q=مكة+المكرمة",
-  accentColor: "#E8A017",
-  primaryColor: "#0F5C4C",
-  ivoryColor: "#F5F8F6",
-  bronzeDark: "#C48910",
+
+  tagline: "مظلات · سواتر · برجولات · هناجر · أعمال حدادة",
+
+  city: "الدمام",
+
+  phone: "0504500495",
+  phoneIntl: "966504500495",
+  phoneDisplay: "050 450 0495",
+
+  siteUrl: "https://hsammnwralrfyd-del.github.io/rubou-albilad",
+
+  instagram: "https://www.instagram.com/zed2020p",
+  mapsUrl: "https://maps.google.com/?q=الدمام",
+
+  /*
+   * ألوان الهوية الجديدة
+   * طابع صناعي وفخم يناسب أعمال الحديد والمظلات والسواتر
+   */
+  accentColor: "#C9A227",
+  primaryColor: "#171717",
+  ivoryColor: "#F5F3ED",
+  bronzeDark: "#8A6A1F",
+
   geo: {
-    region: "SA-14",
-    latitude: "21.4225",
-    longitude: "39.8262",
+    region: "SA-04",
+    latitude: "26.4207",
+    longitude: "50.0888",
   },
+
   description:
-    "مظلات وسواتر مكة والمدينة مظلات سيارات متخصص في تصميم وتنفيذ وتركيب المظلات والسواتر والبرجولات والهناجر والساندوتش بانل والشبوك في مكة المكرمة والمدينة المنورة بجودة عالية وأسعار تنافسية.",
+    "مظلات وسواتر وأعمال حدادة متخصصة في تصميم وتنفيذ وتركيب المظلات والسواتر والبرجولات والهناجر وأعمال الحدادة في الدمام والخبر والقطيف.",
+
   hero: {
-    title: "مظلات وسواتر مكة والمدينة مظلات سيارات",
-    subtitle: "في مكة المكرمة والمدينة المنورة",
+    title: "مظلات وسواتر وأعمال حدادة",
+
+    subtitle: "في الدمام والخبر والقطيف",
+
     paragraph1:
-      "نصمّم وننفّذ ونركّب المظلات والسواتر والبرجولات والهناجر بأحدث المواصفات، مع ضمان الجودة والالتزام بالمواعيد في مكة المكرمة والمدينة المنورة.",
+      "نصمّم وننفّذ ونركّب المظلات والسواتر والبرجولات والهناجر وأعمال الحدادة حسب احتياج العميل، مع الاهتمام بجودة التنفيذ ودقة العمل.",
+
     paragraph2:
-      "جودة عالية · تنفيذ احترافي · أسعار تنافسية · خدمة سريعة وضمان شامل على جميع الأعمال.",
+      "تنفيذ احترافي · تصاميم حسب الطلب · أعمال حدادة · خدمة في الدمام والخبر والقطيف",
   },
+
   services: [
-    { title: "المظلات", description: "مظلات السيارات والحدائق والمدارس" },
-    { title: "السواتر", description: "سواتر الخصوصية للمنازل والفلل بتصاميم متنوعة" },
-    { title: "البرجولات", description: "برجولات وجلسات خارجية بتصاميم عصرية" },
-    { title: "الهناجر", description: "هناجر ومستودعات ساندوتش بانل بعزل حراري" },
-    { title: "الشبوك", description: "تركيب الشبوك وتسوير المباني والمزارع" },
-    { title: "ساندوتش بانل", description: "ألواح ساندوتش بانل للعزل الحراري والصوتي" },
-    { title: "مظلات السيارات", description: "مظلات سيارات بتصاميم هرمية ومقوسة" },
-    { title: "مظلات الحدائق", description: "مظلات للحدائق والمساحات الخارجية" },
+    {
+      title: "المظلات",
+      description: "تنفيذ مظلات السيارات والحدائق والمواقع المختلفة بتصاميم متنوعة.",
+    },
+    {
+      title: "السواتر",
+      description: "تنفيذ سواتر للمنازل والفلل والمواقع التجارية بتصاميم متعددة.",
+    },
+    {
+      title: "البرجولات",
+      description: "تنفيذ برجولات وجلسات خارجية بتصاميم عملية وعصرية.",
+    },
+    {
+      title: "الهناجر",
+      description: "تنفيذ الهناجر والمستودعات والهياكل المعدنية حسب الحاجة.",
+    },
+    {
+      title: "أعمال الحدادة",
+      description: "تنفيذ أعمال الحدادة والهياكل المعدنية والأعمال الحديدية حسب الطلب.",
+    },
+    {
+      title: "الشبوك",
+      description: "تنفيذ وتركيب الشبوك وتسوير الأراضي والمباني والمواقع المختلفة.",
+    },
+    {
+      title: "مظلات السيارات",
+      description: "مظلات سيارات بتصاميم هرمية ومقوسة وأشكال متعددة.",
+    },
+    {
+      title: "مظلات الحدائق",
+      description: "تنفيذ مظلات للحدائق والمساحات الخارجية والجلسات.",
+    },
   ],
+
   navLinks: [
     { label: "الرئيسية", to: "/" },
     { label: "المظلات", to: "/canopies" },
@@ -53,51 +99,68 @@ export const client = {
     { label: "مظلات السيارات", to: "/car-canopies" },
     { label: "مظلات الحدائق", to: "/garden-canopies" },
   ],
+
   projects: [
     {
-      title: "مظلات مكة المكرمة",
-      description: "تنفيذ مظلات متنوعة في مكة المكرمة بجودة عالية وتصاميم عصرية.",
+      title: "مظلات الدمام",
+      description:
+        "تنفيذ مظلات متنوعة للسيارات والمواقع المختلفة في الدمام.",
       link: "/canopies",
     },
     {
-      title: "سواتر المدينة المنورة",
-      description: "سواتر خصوصية بتصاميم أنيقة للمنازل والفلل.",
+      title: "سواتر الخبر",
+      description:
+        "تنفيذ سواتر خصوصية للمنازل والفلل والمواقع المختلفة.",
       link: "/shutters",
     },
     {
+      title: "أعمال الحدادة",
+      description:
+        "تنفيذ الأعمال الحديدية والهياكل المعدنية حسب الطلب.",
+      link: "/canopies",
+    },
+    {
       title: "برجولات وجلسات",
-      description: "برجولات وجلسات خارجية فاخرة للمساحات الخارجية.",
+      description:
+        "تنفيذ برجولات وجلسات خارجية للمنازل والاستراحات والمساحات الخارجية.",
       link: "/pergolas",
     },
     {
-      title: "هناجر ساندوتش بانل",
-      description: "هناجر ومستودعات ساندوتش بانل بعزل حراري ممتاز.",
+      title: "هناجر ومستودعات",
+      description:
+        "تنفيذ الهناجر والمستودعات والهياكل المعدنية.",
       link: "/warehouses",
     },
     {
-      title: "مظلات سيارات",
-      description: "مظلات سيارات بتصاميم هرمية ومقوسة متنوعة.",
-      link: "/car-canopies",
-    },
-    {
       title: "الشبوك والتسوير",
-      description: "تركيب الشبوك وتسوير المباني والمزارع والأراضي.",
+      description:
+        "تنفيذ وتركيب الشبوك وتسوير الأراضي والمواقع المختلفة.",
       link: "/fencing",
     },
   ],
+
   socialMedia: {
-    tiktok: "",
+    tiktok: "https://www.tiktok.com/@user0504500495",
     facebook: "",
-    instagram: "",
-    googleMaps: "https://maps.google.com/?q=مكة+المكرمة",
+    instagram: "https://www.instagram.com/zed2020p",
+    googleMaps: "https://maps.google.com/?q=الدمام",
   },
-  serviceAreas: ["مكة المكرمة", "المدينة المنورة", "جدة", "الطائف"],
+
+  serviceAreas: ["الدمام", "الخبر", "القطيف"],
 } as const;
 
 export const contactLinks = {
-  phone: `tel:+966${client.phone}`,
-  whatsapp: `https://wa.me/${client.phoneIntl}?text=${encodeURIComponent("مرحباً، أرغب في الاستفسار عن خدمات مظلات وسواتر مكة والمدينة مظلات سيارات")}`,
+  phone: `tel:+${client.phoneIntl}`,
+
+  whatsapp: `https://wa.me/${client.phoneIntl}?text=${encodeURIComponent(
+    "مرحباً، أرغب في الاستفسار عن خدمات المظلات والسواتر وأعمال الحدادة."
+  )}`,
+
   whatsappShort: `https://wa.me/${client.phoneIntl}`,
-  designerWhatsapp: `https://wa.me/${client.designerWhatsapp}?text=${encodeURIComponent("مرحباً م/حسام الرفيد")}`,
+
+  designerWhatsapp: `https://wa.me/${client.designerWhatsapp}?text=${encodeURIComponent(
+    "مرحباً م/حسام الرفيد"
+  )}`,
+
   instagram: client.instagram,
 };

@@ -1,10 +1,13 @@
+
 import { ServicePageTemplate } from "@/components/ServicePageTemplate";
 import { servicesById } from "@/config/services";
 
 const CarCanopiesPage = () => {
-  const service = servicesById.carCanopies;
-
-  return <ServicePageTemplate service={service} />;
+  return (
+    <ServicePageTemplate
+      service={servicesById.carCanopies}
+    />
+  );
 };
 
 export default CarCanopiesPage;

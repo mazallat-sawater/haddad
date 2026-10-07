@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -5,6 +6,11 @@ import { componentTagger } from "lovable-tagger";
 import { copyFileSync } from "fs";
 
 export default defineConfig(({ mode }) => ({
+  /**
+   * GitHub Pages
+   * يبقى كما هو حاليًا لأن المشروع منشور داخل:
+   * /rubou-albilad/
+   */
   base: "/rubou-albilad/",
 
   server: {
@@ -14,21 +20,25 @@ export default defineConfig(({ mode }) => ({
 
   plugins: [
     react(),
+
     mode === "development" && componentTagger(),
 
     {
-      name: "copy-htaccess",
+      name: "copy-server-config",
+
       closeBundle() {
-        if (mode === "production") {
-          try {
-            copyFileSync("public/.htaccess", "dist/.htaccess");
-            copyFileSync("public/web.config", "dist/web.config");
-          } catch (err) {
-            console.warn(
-              "Could not copy .htaccess or web.config:",
-              err
-            );
-          }
+        if (mode !== "production") {
+          return;
+        }
+
+        try {
+          copyFileSync("public/.htaccess", "dist/.htaccess");
+          copyFileSync("public/web.config", "dist/web.config");
+        } catch (err) {
+          console.warn(
+            "Could not copy .htaccess or web.config:",
+            err
+          );
         }
       },
     },
@@ -42,18 +52,27 @@ export default defineConfig(({ mode }) => ({
 
   build: {
     cssCodeSplit: true,
+
     minify: mode === "production" ? "esbuild" : false,
 
     rollupOptions: {
       output: {
         manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "react-vendor": [
+            "react",
+            "react-dom",
+            "react-router-dom",
+          ],
+
           "ui-vendor": [
             "@radix-ui/react-dialog",
             "@radix-ui/react-dropdown-menu",
             "@radix-ui/react-accordion",
           ],
-          "query-vendor": ["@tanstack/react-query"],
+
+          "query-vendor": [
+            "@tanstack/react-query",
+          ],
         },
       },
     },

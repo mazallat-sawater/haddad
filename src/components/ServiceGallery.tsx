@@ -1,5 +1,13 @@
+
 import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, X, Maximize2, Camera } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Maximize2,
+  Camera,
+} from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import { assetPath } from "@/lib/assetPath";
 
@@ -18,29 +26,47 @@ export const ServiceGallery = ({
 }: ServiceGalleryProps) => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
 
   const goNext = useCallback(() => {
     setLightboxIndex((current) => {
-      if (current === null) return null;
+      if (current === null || images.length === 0) {
+        return null;
+      }
+
       return (current + 1) % images.length;
     });
   }, [images.length]);
 
   const goPrev = useCallback(() => {
     setLightboxIndex((current) => {
-      if (current === null) return null;
+      if (current === null || images.length === 0) {
+        return null;
+      }
+
       return (current - 1 + images.length) % images.length;
     });
   }, [images.length]);
 
   useEffect(() => {
-    if (lightboxIndex === null) return;
+    if (lightboxIndex === null) {
+      return;
+    }
 
     const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") goNext();
-      if (event.key === "ArrowRight") goPrev();
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        goNext();
+      }
+
+      if (event.key === "ArrowRight") {
+        goPrev();
+      }
     };
 
     document.body.style.overflow = "hidden";
@@ -52,32 +78,57 @@ export const ServiceGallery = ({
     };
   }, [lightboxIndex, closeLightbox, goNext, goPrev]);
 
-  if (images.length === 0) return null;
+  if (images.length === 0) {
+    return null;
+  }
 
   return (
     <>
-      <section className="section-padding bg-white">
+      <section
+        className="section-padding bg-[#F5F3ED]"
+        dir="rtl"
+      >
         <div className="section-container">
-          <div className="mb-10 text-center sm:mb-14">
-            <div className="section-badge mb-5 mx-auto w-fit">
-              <Camera size={14} className="shrink-0 text-bronze" />
+          <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+            <div className="section-badge mx-auto mb-5 w-fit">
+              <Camera
+                size={14}
+                className="shrink-0 text-accent"
+              />
               <span>معرض الصور</span>
             </div>
+
             <h2 className="section-title mb-4">
               {title}
-              <span className="mt-2 block text-gradient-luxury">{serviceName}</span>
+
+              <span className="mt-2 block text-gradient-luxury">
+                {serviceName}
+              </span>
             </h2>
-            <p className="section-desc mx-auto">{description}</p>
+
+            <p className="section-desc mx-auto">
+              {description}
+            </p>
           </div>
 
-          {/* شبكة صور نظيفة */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {images.map((image, index) => (
               <button
-                key={image}
+                key={`${image}-${index}`}
                 type="button"
                 onClick={() => setLightboxIndex(index)}
-                className="group overflow-hidden rounded-xl border border-bronze/15 bg-ivory text-right shadow-sm transition-all hover:border-bronze/30 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+                className={cn(
+                  "group overflow-hidden rounded-2xl",
+                  "border border-[#C9A227]/20",
+                  "bg-white text-right shadow-sm",
+                  "transition-all duration-300",
+                  "hover:-translate-y-1",
+                  "hover:border-[#C9A227]/50",
+                  "hover:shadow-xl",
+                  "focus:outline-none",
+                  "focus-visible:ring-2",
+                  "focus-visible:ring-[#C9A227]"
+                )}
                 aria-label={`عرض صورة ${index + 1} من ${images.length}`}
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -86,14 +137,22 @@ export const ServiceGallery = ({
                     alt={`${serviceName} - صورة ${index + 1}`}
                     loading={index < 3 ? "eager" : "lazy"}
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    width="800"
+                    height="600"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
-                <div className="flex items-center justify-between px-3 py-2.5">
-                  <span className="text-xs font-bold text-charcoal-soft/60">
-                    {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+
+                <div className="flex items-center justify-between bg-white px-4 py-3">
+                  <span className="text-xs font-bold text-[#171717]/50">
+                    {String(index + 1).padStart(2, "0")} /{" "}
+                    {String(images.length).padStart(2, "0")}
                   </span>
-                  <Maximize2 size={14} className="shrink-0 text-bronze opacity-0 transition-opacity group-hover:opacity-100" />
+
+                  <Maximize2
+                    size={14}
+                    className="shrink-0 text-[#C9A227] transition-opacity group-hover:opacity-100"
+                  />
                 </div>
               </button>
             ))}
@@ -103,7 +162,7 @@ export const ServiceGallery = ({
 
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-charcoal/92 p-4"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#171717]/95 p-4"
           role="dialog"
           aria-modal="true"
           aria-label="عرض الصورة بحجم كامل"
@@ -112,7 +171,7 @@ export const ServiceGallery = ({
           <button
             type="button"
             onClick={closeLightbox}
-            className="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:left-4 sm:top-4"
+            className="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-[#C9A227] hover:text-[#171717] sm:left-4 sm:top-4"
             aria-label="إغلاق"
           >
             <X size={20} />
@@ -122,16 +181,23 @@ export const ServiceGallery = ({
             <>
               <button
                 type="button"
-                onClick={(e) => { e.stopPropagation(); goPrev(); }}
-                className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:h-11 sm:w-11"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  goPrev();
+                }}
+                className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-[#C9A227] hover:text-[#171717] sm:h-11 sm:w-11"
                 aria-label="الصورة السابقة"
               >
                 <ChevronRight size={20} />
               </button>
+
               <button
                 type="button"
-                onClick={(e) => { e.stopPropagation(); goNext(); }}
-                className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:h-11 sm:w-11"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  goNext();
+                }}
+                className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-[#C9A227] hover:text-[#171717] sm:h-11 sm:w-11"
                 aria-label="الصورة التالية"
               >
                 <ChevronLeft size={20} />
@@ -140,16 +206,20 @@ export const ServiceGallery = ({
           )}
 
           <div
-            className={cn("relative w-full max-w-4xl animate-scale-in")}
-            onClick={(e) => e.stopPropagation()}
+            className={cn(
+              "relative w-full max-w-5xl animate-scale-in"
+            )}
+            onClick={(event) => event.stopPropagation()}
           >
             <img
               src={assetPath(images[lightboxIndex])}
               alt={`${serviceName} - صورة ${lightboxIndex + 1}`}
-              className="max-h-[80vh] w-full rounded-lg object-contain"
+              className="mx-auto max-h-[80vh] w-full rounded-xl object-contain"
             />
+
             <p className="mt-3 text-center text-sm font-bold text-white/80">
-              {String(lightboxIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+              {String(lightboxIndex + 1).padStart(2, "0")} /{" "}
+              {String(images.length).padStart(2, "0")}
             </p>
           </div>
         </div>

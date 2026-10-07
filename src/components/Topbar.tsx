@@ -1,14 +1,53 @@
-export default function Topbar(){
+
+import { MapPin, MessageCircle, Phone } from "lucide-react";
+
+import { client, contactLinks } from "@/config/client";
+
+export default function Topbar() {
   return (
-    <div className="topbar">
+    <div className="topbar" dir="rtl">
       <div className="container topbar-inner">
-        <div className="top-left">نخدم فقط في الرياض <span className="dot">•</span> الموقع</div>
+        <div className="top-left">
+          <MapPin
+            size={14}
+            className="shrink-0"
+          />
+
+          <span>
+            نخدم {client.serviceAreas.join(" و")}
+          </span>
+
+          <span className="dot">•</span>
+
+          <span>{client.city}</span>
+        </div>
+
         <div className="top-right">
-          <a href="mailto:mawada.web@gmail.com">mawada.web@gmail.com</a>
-          <a href="https://wa.me/966541210865">تواصل واتساب</a>
-          <a href="tel:+966541210865">+966 56 841 4198</a>
+          <a
+            href={contactLinks.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="التواصل عبر واتساب"
+          >
+            <MessageCircle
+              size={14}
+              className="shrink-0"
+            />
+            <span>واتساب</span>
+          </a>
+
+          <a
+            href={contactLinks.phone}
+            aria-label={`الاتصال على ${client.phoneDisplay}`}
+          >
+            <Phone
+              size={14}
+              className="shrink-0"
+            />
+            <span dir="ltr">{client.phoneDisplay}</span>
+          </a>
         </div>
       </div>
     </div>
-  )
+  );
 }
